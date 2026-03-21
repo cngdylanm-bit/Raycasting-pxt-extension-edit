@@ -574,9 +574,10 @@ namespace Render {
 
             // Ceiling
             if (this.ceilingMap) {
-                for (let y = 0; y < SHHalf; y++) {
-                    let p = y;
-                    // let posZ = SH * this.viewZPos / this.tilemapScaleSize / fpx_scale;
+                //for (let y = 0; y < SHHalf; y++) {
+                for (let y = 0; y < SH; y++) {
+                    //let p = y;
+                    let p =  y - SHHalf;
                     let posZ = SH * this.viewZPos / this.tilemapScaleSize / fpx_scale;
                     posZ = 125 - posZ
                     let rowDistance = posZ / (SHHalf - p);
