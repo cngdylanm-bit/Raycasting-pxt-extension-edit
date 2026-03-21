@@ -574,10 +574,8 @@ namespace Render {
 
             // Ceiling
             if (this.ceilingMap) {
-                //for (let y = 0; y < SHHalf; y++) {
-                for (let y = 0; y < SH; y++) {
-                    //let p = y;
-                    let p =  y - SHHalf;
+                for (let y = 0; y < SHHalf; y++) {
+                    let p = y;
                     let posZ = SH * this.viewZPos / this.tilemapScaleSize / fpx_scale;
                     posZ = 125 - posZ
                     let rowDistance = posZ / (SHHalf - p);
@@ -596,11 +594,18 @@ namespace Render {
                         let tx = (16 * (ceilingX - cellX)) & 15;
                         let ty = (16 * (ceilingY - cellY)) & 15;
 
-                        let tileType = this.ceilingMap.getTile(cellX, cellY);
+                        let mapX = Math.floor(ceilingX);
+                        if (mapX < 0) mapX = (mapX % this.tilemapCols + this.tilemapCols) % this.tilemapCols;
+                        else mapX = mapX % this.tilemapCols;
+
+                        let mapY = Math.floor(ceilingY);
+                        if (mapY < 0) mapY = (mapY % this.tilemapRows + this.tilemapRows) % this.tilemapRows;
+                        else mapY = mapY % this.tilemapRows;
+
+                        let tileType = this.ceilingMap.getTile(mapX, mapY);
                         let ceilingTex = this.ceilingTextures[tileType];
                         ceilingX += ceilingStepX;
                         ceilingY += ceilingStepY;
-
                         let c = ceilingTex.getPixel(tx, ty);
                         this.tempScreen.setPixel(x, y, c);
                     }
