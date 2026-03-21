@@ -578,7 +578,7 @@ namespace Render {
                     let p = y;
                     // let posZ = SH * this.viewZPos / this.tilemapScaleSize / fpx_scale;
                     let posZ = SH * this.viewZPos / this.tilemapScaleSize / fpx_scale;
-                    posZ = (SH * 1.04167) - posZ
+                    posZ = (SH * 1.041666667) - posZ
                     let rowDistance = posZ / (SHHalf - p);
                     let ceilingStepX = rowDistance * (rayDirX1 - rayDirX0) / SW;
                     let ceilingStepY = rowDistance * (rayDirY1 - rayDirY0) / SW;
