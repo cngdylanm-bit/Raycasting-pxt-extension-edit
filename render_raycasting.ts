@@ -168,10 +168,6 @@ namespace Render {
             this._ceilingMap = ceilingMap
         }
 
-        ceilingToggle() { // fixed
-            this.ceilingEnabled = !this.ceilingEnabled
-        }
-
         getMotionZ(spr: Sprite, offsetZ: number = 0) {
             let motionZ = this.spriteMotionZ[spr.id]
             if (!motionZ) {
