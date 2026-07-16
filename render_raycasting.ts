@@ -574,6 +574,7 @@ namespace Render {
             }
 
             // Ceiling
+            /*
             if (this.ceilingMap && this.ceilingEnabled) {
                 for (let y = 0; y < SHHalf; y++) {
                     let p = y;
@@ -605,7 +606,7 @@ namespace Render {
                         this.tempScreen.setPixel(x, y, c);
                     }
                 }
-            }
+            }*/
 
             // walls
 
@@ -719,13 +720,13 @@ namespace Render {
                 this.dist[x] = perpWallDist
 
                 // background 
-                if (!this.ceilingMap || !this.ceilingEnabled) {
+                //if (!this.ceilingMap || !this.ceilingEnabled) {
                     for (let y = 0; y < drawStart; y++) {
                         let backX = (backgroundOffset + x) % SW
                         let c = sc.background.image.getPixel(backX, y)
                         this.tempScreen.setPixel(x, y, c)
                     }
-                }
+                //}
             }
             //debug
             // info.setScore(control.millis()-ms)
