@@ -67,6 +67,7 @@ namespace Render {
         protected oldRender: scene.Renderable
         protected myRender: scene.Renderable
         protected _ceilingMap: tiles.TileMapData
+        public ceilingEnabled: boolean = false
 
         //render
         protected wallHeightInView: number
@@ -165,6 +166,10 @@ namespace Render {
         }
         set ceilingMap(ceilingMap: tiles.TileMapData) {
             this._ceilingMap = ceilingMap
+        }
+
+        set ceilingToggle() {
+            this.ceilingEnabled = !this.ceilingEnabled
         }
 
         getMotionZ(spr: Sprite, offsetZ: number = 0) {
@@ -573,7 +578,7 @@ namespace Render {
             }
 
             // Ceiling
-            if (this._ceilingMap) {
+            if (this.ceilingMap && this.ceilingEnabled) {
                 for (let y = 0; y < SHHalf; y++) {
                     let p = y;
                     // let posZ = SH * this.viewZPos / this.tilemapScaleSize / fpx_scale;
@@ -718,7 +723,7 @@ namespace Render {
                 this.dist[x] = perpWallDist
 
                 // background 
-                if (!this._ceilingMap) {
+                if (!this.ceilingMap || !this.ceilingEnabled) {
                     for (let y = 0; y < drawStart; y++) {
                         let backX = (backgroundOffset + x) % SW
                         let c = sc.background.image.getPixel(backX, y)

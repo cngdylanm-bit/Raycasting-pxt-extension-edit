@@ -133,6 +133,11 @@ namespace Render {
     //% tilemap.fieldOptions.tileWidth=16
     //% help=tiles/set-tile-map
     export function setCeilingTilemap(tilemap: tiles.TileMapData) {
+        if (tilemap == null) {
+            raycastingRender.ceilingMap = null
+            return
+        }
+
         if (tilemap.width != raycastingRender.map.width || tilemap.height != raycastingRender.map.height) {
             throw "ceiling tilemap dimensions do not match base map"
         }
