@@ -168,7 +168,7 @@ namespace Render {
             this._ceilingMap = ceilingMap
         }
 
-        ceilingToggle() {
+        ceilingToggle() { // fixed
             this.ceilingEnabled = !this.ceilingEnabled
         }
 
